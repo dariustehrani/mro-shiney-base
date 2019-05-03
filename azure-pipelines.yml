@@ -1,0 +1,21 @@
+# Builda a Docker Base Image Shiny on Microsoft R Open 
+
+trigger:
+  branches:
+    include:
+    - base-image
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+- task: Docker@2
+  displayName: Build and Push
+  inputs:
+    containerRegistry: 'datascienceacr4711'
+    repository: 'mro-shiny-base'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: |
+     $(Build.BuildId)
+     latest
