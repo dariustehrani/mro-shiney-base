@@ -3,7 +3,7 @@
 trigger:
   branches:
     include:
-    - base-image
+    - master
 
 pool:
   vmImage: 'Ubuntu 16.04'
